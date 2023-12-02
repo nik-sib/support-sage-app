@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "SupportSage",
+    "version": "1.0.0",
+    "description": "AI based support for customer queries",
+    "icons": {
+        "16": "images/icon-16x16.png",
+        "32": "images/icon-32x32.png",
+        "48": "images/icon-32x32.png",
+        "128": "images/icon-32x32.png"
+	},
+	"permissions": ["contextMenus", "tabs", "activeTab", "scripting", "storage"],
+	"background": {
+		"service_worker": "service-worker.js"
+	},
+  "action": {
+      "default_title": "AI based support for customer queries"
+  },
+	"host_permissions": [
+		"http://*/*",
+		"https://*/*"
+	]
+}

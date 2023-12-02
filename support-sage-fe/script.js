@@ -7,34 +7,12 @@ function submitQuery() {
         messageDiv.style.display = 'block';
         messageDiv.textContent = query;
 
-        // const url = 'http://0.0.0.0:7007/suggest';
-        // const data = { 'input_text': response }
-        
-        // postData(url, data).then((apiResponse) => {
-        //     displaySuggestions(apiResponse.suggestions);
-        // });
+        const url = 'http://0.0.0.0:7007/suggest';
+        const data = { 'input_text': query }
 
-        let threads = [
-            'http://www.ticketDesk.com/thread1',
-            'http://www.ticketDesk.com/thread2',
-            'http://www.ticketDesk.com/thread3'
-        ];
-
-        let tickets = [
-            'http://www.ticketDesk.com/ticket1',
-            'http://www.ticketDesk.com/ticket2',
-            'http://www.ticketDesk.com/ticket3'
-        ];
-
-        const apiResponse = {
-            suggestions: [
-                { resolution: 'Support Sage Suggestion (High)', score: 0.6, threads, tickets },
-                { resolution: 'Support Sage Suggestion (Medium)', score: 0.3, threads, tickets },
-                { resolution: 'Support Sage Suggestion (Low)', score: 0.1, threads, tickets },
-
-            ]
-        };
-        displaySuggestions(apiResponse.suggestions);
+        postData(url, data).then((data) => {
+            displaySuggestions(data.suggestions);
+        });
     }
     else {
         console.log('No Text in Query')
@@ -51,9 +29,9 @@ function displaySuggestions(suggestions) {
         const btn = document.createElement('button');
         btn.classList.add('suggestion-btn');
 
-        if (score > 0.4) {
+        if (score > 40) {
             btn.classList.add('green');
-        } else if (score > 0.3 && score <= 0.4) {
+        } else if (score > 30 && score <= 40) {
             btn.classList.add('orange');
         } else {
             btn.classList.add('red');
@@ -113,7 +91,7 @@ function displayThreadsAndTickets(threads, tickets) {
         tickets.forEach(ticket => {
             const ticketBox = document.createElement('div');
             ticketBox.classList.add('ticket-box');
-            ticketBox.textContent = ticket.link;
+            ticketBox.textContent = ticket;
             ticketsContainer.appendChild(ticketBox);
         })
     }
@@ -149,7 +127,6 @@ function summarizeResponse() {
 
 
 async function postData(url = "", data = {}) {
-    console.log('postAPICall', data);
     const response = await fetch(url, {
         method: "POST",
         mode: "cors",
@@ -194,3 +171,29 @@ function summarizeTicketResolution() {
     }
 }
 
+function addCategory(){
+    const ticketDescription = document.getElementById('ticketDescription').value;
+    const resolution = document.getElementById('resolution').value;
+    const ticketType = document.getElementById('ticketType').value;
+    const relevantThreads = document.getElementById('ticketThreads').value;
+    const relevantTickets = document.getElementById('relevantTickets').value;
+    const rating = document.querySelector('input[name="customerSatisfactionRating"]:checked');
+    const ratingValue = rating ? rating.value : null;
+    const ticketChannel = document.getElementById('ticketChannel');
+    const ticketChannelValue = ticketChannel ? ticketChannel.value : null;
+
+    const url = 'http://0.0.0.0:7007/add-data';
+    const data = {
+        "description":ticketDescription,
+        "resolution": resolution,
+        "type": ticketType,
+        "relevant_threads": relevantThreads,
+        "relevant_tickets": relevantTickets,
+        "customer_satisfication_rating": ratingValue,
+        "channel": ticketChannelValue
+    }
+    postData(url, data).then((data) => {
+        console.log('Submitted Data Successfully');
+    });
+
+}

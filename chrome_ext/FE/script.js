@@ -220,3 +220,25 @@ tablink.forEach(element => {
     });
 });
 // manage show/hide tabs - end here
+
+// Add links on dynamically added elements
+document.addEventListener( "click", buttonClickListener );
+
+function buttonClickListener(event){
+    var element = event.target;
+
+    switch (element.id) {
+        case 'summarize-btn-query':
+            summarizeQuery();
+            break;
+        case 'client-query-btn':
+            submitQuery();
+            break;
+        case 'summarize-btn-response':
+            summarizeResponse();
+            break;
+        case 'submit-btn':
+            displaySuggestionMsgHelper();
+            break;
+    }
+}

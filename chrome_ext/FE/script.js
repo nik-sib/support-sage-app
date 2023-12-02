@@ -250,3 +250,13 @@ function buttonClickListener(event){
     }
 }
 // Add links on dynamically added elements - ends here
+
+// Prefill client query field, if user come from context menu
+chrome.storage.sync.get(['ss_query'], function(items) {
+    if (items.ss_query !== undefined) {
+        document.getElementById('editable-message').value = items.ss_query;
+
+        chrome.storage.sync.remove(['ss_query'], function(items) {
+        });
+    }
+});

@@ -12,19 +12,19 @@
         <div id="left-container">
             <div id="form-container">
                 <div id="form-inner-container">
-                    <form id="ticketForm" action="http://0.0.0.0:7007/add-data" method="post">
+                    <form id="ticketForm">
                         <div class="class-input">
                             <label for="ticketDescription">Ticket Description:</label>
                             <div class="input-container">
-                            <input type="text" class = "message-input" id="ticketDescription" name="Ticket Description" placeholder="Ticket Description" required>
-                            <button type="button" class= "summarize-btn" id="ticket-desc-summ-btn">Summarize</button>
-                                </div>
+                            <textarea type="text" class = "message-input" id="ticketDescription" name="Ticket Description" placeholder="Ticket Description" required></textarea>
+                            <button id="summarize-btn-query" type="button" class= "summarize-btn" id="ticket-desc-summ-btn">Summarize</button>
+                        </div>
                         </div>
                         <div class="class-input">
                             <label for="resolution">Resolution:</label>
                             <div class="input-container">
-                            <input type="text" class = "message-input" id="resolution" name="Resolution" placeholder="Ticket Description" required>
-                            <button type="button" class= "summarize-btn" id= "resolution-summ-btn">Summarize</button>
+                            <textarea type="text" class = "message-input" id="resolution" name="Resolution" placeholder="Resolution" required></textarea>
+                            <button id="summarize-btn-query" type="button" class= "summarize-btn" id= "resolution-summ-btn">Summarize</button>
                             </div>
                         </div>
                         <div class="class-input">
@@ -42,7 +42,7 @@
                         <div class="class-input">
                             <label for="ticketTickets">Relevant Tickets:</label>
                             <div class="input-container">
-                            <input type="text" class = "message-input" id="ticketTickets" name="Tickets" placeholder="Relevant Tickets" required>
+                            <input type="text" class = "message-input" id="relevantTickets" name="Tickets" placeholder="Relevant Tickets" required>
                             </div>
                         </div>
                         <div class="class-input">
@@ -71,12 +71,16 @@
                         </div>
                         </div>
                         <div class="class-input">
-                            <button class = "submit-btn" type="submit">Submit</button>
+                            <button class = "submit-btn" type="submit" onclick="addCategory()">Submit</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+
+</body>
+</html>
 </body>
 </html>

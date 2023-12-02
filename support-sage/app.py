@@ -21,7 +21,7 @@ app.config["CORS_HEADERS"] = "Content-Type"
 app.config['JSON_SORT_KEYS'] = False
 
 csv_file = 'train_data.csv'
-customer_tickets_csv = 'customer_support_tickets.csv'
+customer_tickets_csv = 'customer_support_tickets_new.csv'
 new_data_csv = 'new_data.csv'
 threads = [
     'https://test.slack.com/archives/CDAFSHNDMR45/p1701505495465299',

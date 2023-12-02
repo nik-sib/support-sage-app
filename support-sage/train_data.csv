@@ -1,4 +1,0 @@
-ticket_description,resolution,ticket_type,ticket_thread,tickets,customer_satisfication_rating,ticket_channel
-Test data 2,fix is on way,billing,"['t1', 't2']","['t1', 't2']",1,chat
-Test data 222,fix is on way,billing,"['t1', 't2']","['t1', 't2']",1,chat
-Test data 333,fix is on way,billing,,,1,chat

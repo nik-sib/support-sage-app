@@ -27,11 +27,14 @@ threads = [
     'https://test.slack.com/archives/CDAFSHNDMR45/p1701505495465299',
     'https://test.slack.com/archives/C0FY340QAIOP/p1701505495345679',
     'https://test.slack.com/archives/DOARFGAOP901/r1ewew015054954659',
+    'https://test.slack.com/archives/DOARFGAOP901/gjhdhdhjbbasdjdnj7'
 ]
 tickets = [
     'https://test.atlassian.net/browse/ABC-121',
     'https://test.atlassian.net/browse/XYZ-123',
-    'https://test.atlassian.net/browse/GCC-322'
+    'https://test.atlassian.net/browse/GCC-322',
+    'https://test.atlassian.net/browse/MUL-322',
+    'https://test.atlassian.net/browse/RUT-567'
 ]
 
 
@@ -118,15 +121,23 @@ def suggest():
     most_similar_indices = similarities.argsort()[0][-num_similar_tickets:][::-1]
 
     responses_list = []
+    random_count_threads = random.randint(1, len(threads))
+    random_count_tickets = random.randint(1, len(tickets))
     for idx in most_similar_indices:
+        random_threads = []
+        random_tickets = []
+        for _ in range(random_count_threads):
+            random_threads.append(random.choice(threads))
+        for _ in range(random_count_tickets):
+            random_tickets.append(random.choice(tickets))
         similar_ticket_resolution = all_tickets.iloc[idx]['Resolution']
         similarity_score = similarities[0, idx]
         responses_list.append(
             {
                 'resolution': similar_ticket_resolution,
                 'score': format(similarity_score * 100, '.1f'),
-                'threads': random.choice(threads),
-                'tickets': random.choice(tickets)
+                'threads': random_threads,
+                'tickets': random_tickets
             }
         )
 

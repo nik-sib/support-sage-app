@@ -6,7 +6,7 @@ This repository hosts an ML-driven tool designed to offer support ticket suggest
 
 - [docker](https://docs.docker.com/install/)
 - [docker-compose](https://docs.docker.com/compose/install/)
-- https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
+- [Live server extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
 
 ## Getting Started
 

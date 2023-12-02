@@ -1,4 +1,4 @@
-# Support Sage App
+# SupportSage
 
 This repository hosts an ML-driven tool designed to offer support ticket suggestions. It utilizes machine learning models and Flask as the backend application.
 

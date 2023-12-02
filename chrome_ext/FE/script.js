@@ -256,7 +256,10 @@ function buttonClickListener(event){
         case 'resolution-summ-btn':
             summarizeTicketResolution();
             break;
-
+        case 'submit-category-btn':
+            addCategory();
+            break;
+    
     }
 }
 // Add links on dynamically added elements - ends here

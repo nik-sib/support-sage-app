@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Data Submission Form</title>
 </head>
+
 <body>
     <div id="main-container">
         <div id="left-container">
@@ -14,40 +16,48 @@
                         <div class="class-input">
                             <label for="ticketDescription">Ticket Description:</label>
                             <div class="input-container">
-                            <textarea type="text" class = "message-input" id="ticketDescription" name="Ticket Description" placeholder="Ticket Description" required></textarea>
-                            <button id="summarize-btn-query" type="button" class= "summarize-btn" onclick="summarizeTicketDescription()">Summarize</button>
-                        </div>
+                                <textarea type="text" class="message-input" id="ticketDescription"
+                                    name="Ticket Description" placeholder="Ticket Description" required></textarea>
+                                <button id="summarize-btn-query" type="button" class="summarize-btn"
+                                    onclick="summarizeTicketDescription()">Summarize</button>
+                            </div>
                         </div>
                         <div class="class-input">
                             <label for="resolution">Resolution:</label>
                             <div class="input-container">
-                            <textarea type="text" class = "message-input" id="resolution" name="Resolution" placeholder="Resolution" required></textarea>
-                            <button id="summarize-btn-query" type="button" class= "summarize-btn" onclick="summarizeTicketResolution()">Summarize</button>
+                                <textarea type="text" class="message-input" id="resolution" name="Resolution"
+                                    placeholder="Resolution" required></textarea>
+                                <button id="summarize-btn-query" type="button" class="summarize-btn"
+                                    onclick="summarizeTicketResolution()">Summarize</button>
                             </div>
                         </div>
                         <div class="class-input">
                             <label for="ticketType">Ticket Type:</label>
                             <div class="input-container">
-                            <input type="text" class = "message-input" id="ticketType" name="Ticket Type" placeholder="Ticket Type" required>
+                                <input type="text" class="message-input" id="ticketType" name="Ticket Type"
+                                    placeholder="Ticket Type" required>
                             </div>
                         </div>
                         <div class="class-input">
                             <label for="ticketThreads">Relevant Threads:</label>
                             <div class="input-container">
-                            <input type="text" class = "message-input" id="ticketThreads" name="Ticket Threads" placeholder="Relevant Threads" required>
+                                <input type="text" class="message-input" id="ticketThreads" name="Ticket Threads"
+                                    placeholder="Relevant Threads" required>
                             </div>
                         </div>
                         <div class="class-input">
                             <label for="relevantTickets">Relevant Tickets:</label>
                             <div class="input-container">
-                            <input type="text" class = "message-input" id="relevantTickets" name="Tickets" placeholder="Relevant Tickets" required>
+                                <input type="text" class="message-input" id="relevantTickets" name="Tickets"
+                                    placeholder="Relevant Tickets" required>
                             </div>
                         </div>
                         <div class="class-input">
                             <label for="customerSatisfactionRating">Customer Satisfaction Rating:</label>
                             <div class="input-container">
                                 <div class="radio-buttons-container">
-                                    <input type="radio" id="rating1" name="customerSatisfactionRating" value="1" required>                        
+                                    <input type="radio" id="rating1" name="customerSatisfactionRating" value="1"
+                                        required>
                                     <input type="radio" id="rating2" name="customerSatisfactionRating" value="2">
                                     <input type="radio" id="rating3" name="customerSatisfactionRating" value="3">
                                     <input type="radio" id="rating4" name="customerSatisfactionRating" value="4">
@@ -56,20 +66,20 @@
                                 <span class="satisfaction-text">Higher is better</span>
                             </div>
                         </div>
-                        
+
                         <div class="class-input">
-                        <label for="ticketChannel">Ticket Channel:</label>
-                        <div class="input-container">
-                            <select id="ticketChannel" name="ticketChannel" required >
-                                <option value="Social Media">Social Media</option>
-                                <option value="Chat">Chat</option>
-                                <option value="Phone">Phone</option>
-                                <option value="Email">Email</option>
-                            </select>
-                        </div>
+                            <label for="ticketChannel">Ticket Channel:</label>
+                            <div class="input-container">
+                                <select id="ticketChannel" name="ticketChannel" required>
+                                    <option value="Social Media">Social Media</option>
+                                    <option value="Chat">Chat</option>
+                                    <option value="Phone">Phone</option>
+                                    <option value="Email">Email</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="class-input">
-                            <button class = "submit-btn" type="submit" onclick="addCategory()">Submit</button>
+                            <button class="submit-btn" type="submit" onclick="addCategory(event)">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -79,6 +89,8 @@
 
 
 </body>
+
 </html>
 </body>
+
 </html>

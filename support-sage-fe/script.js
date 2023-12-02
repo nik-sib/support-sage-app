@@ -78,9 +78,13 @@ function displayThreadsAndTickets(threads, tickets) {
         threads.forEach(thread => {
             const threadBox = document.createElement('div');
             threadBox.classList.add('thread-box');
-            threadBox.textContent = thread;
+            const threadLink = document.createElement('a');
+            threadLink.href = thread;
+            threadLink.target = '_blank';
+            threadLink.textContent = thread;
+            threadBox.appendChild(threadLink);
             threadsContainer.appendChild(threadBox);
-        })
+        });
     }
 
     // Tickets
@@ -91,7 +95,11 @@ function displayThreadsAndTickets(threads, tickets) {
         tickets.forEach(ticket => {
             const ticketBox = document.createElement('div');
             ticketBox.classList.add('ticket-box');
-            ticketBox.textContent = ticket;
+            const ticketLink = document.createElement('a');
+            ticketLink.href = ticket;
+            ticketLink.target = '_blank';
+            ticketLink.textContent = ticket
+            ticketBox.appendChild(ticketLink);
             ticketsContainer.appendChild(ticketBox);
         })
     }
@@ -142,6 +150,22 @@ async function postData(url = "", data = {}) {
     return response.json();
 }
 
+async function postDataString(url = "", data = {}) {
+    const response = await fetch(url, {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify(data),
+    });
+    return response;
+}
+
 function summarizeTicketDescription() {
     const ticketDescriptionInput = document.getElementById('ticketDescription');
     const currentDescription = ticketDescriptionInput.value;
@@ -171,7 +195,8 @@ function summarizeTicketResolution() {
     }
 }
 
-function addCategory(){
+function addCategory(event){
+    event.preventDefault();
     const ticketDescription = document.getElementById('ticketDescription').value;
     const resolution = document.getElementById('resolution').value;
     const ticketType = document.getElementById('ticketType').value;
@@ -192,8 +217,8 @@ function addCategory(){
         "customer_satisfication_rating": ratingValue,
         "channel": ticketChannelValue
     }
-    postData(url, data).then((data) => {
-        console.log('Submitted Data Successfully');
+    postDataString(url, data).then((data) => {
+        window.alert('Submitted Data Successfully');
     });
 
 }

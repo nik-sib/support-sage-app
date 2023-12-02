@@ -32,7 +32,7 @@
 }
 
 #right-container {
-    display:flex;
+    display: flex;
     flex-direction: column;
 }
 
@@ -73,7 +73,7 @@
 
 .message-left {
     background-color: #ccc;
-    float: left; 
+    float: left;
 }
 
 .message-right {
@@ -116,7 +116,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#ticket-header{
+#ticket-header {
     font-size: 20px;
     font-weight: 400;
     background-color: aliceblue;
@@ -127,6 +127,7 @@
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 .thread-box {
     width: 95%;
     padding: 10px;
@@ -146,6 +147,7 @@
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 .ticket-box {
     width: 95%;
     padding: 10px;
@@ -163,6 +165,7 @@
     border: 1px solid #ccc;
     margin-bottom: 10px;
 }
+
 #form-inner-container {
     height: fit-content;
     width: 40vw;
@@ -191,7 +194,7 @@
     padding: 5px;
     margin-right: 5px;
     border-radius: 10px;
-  resize: vertical;
+    resize: vertical;
 }
 
 #submit-btn {
@@ -205,6 +208,7 @@
     margin-left: 5px;
     border-radius: 10px;
 }
+
 #summarize-btn-query {
     cursor: pointer;
     margin-left: 5px;
@@ -287,7 +291,7 @@ label {
 }
 
 
-#ticketChannel{
+#ticketChannel {
     flex: 1;
     padding: 5px;
     margin-right: 5px;

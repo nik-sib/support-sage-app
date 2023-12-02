@@ -84,7 +84,7 @@ function displayThreadsAndTickets(threads, tickets) {
             threadLink.textContent = thread;
             threadBox.appendChild(threadLink);
             threadsContainer.appendChild(threadBox);
-        });
+        })
     }
 
     // Tickets
@@ -93,8 +93,6 @@ function displayThreadsAndTickets(threads, tickets) {
         ticketsContainer.innerHTML = '';
 
         tickets.forEach(ticket => {
-            const ticketBox = document.createElement('div');
-            ticketBox.classList.add('ticket-box');
             const ticketLink = document.createElement('a');
             ticketLink.href = ticket;
             ticketLink.target = '_blank';
@@ -149,7 +147,6 @@ async function postData(url = "", data = {}) {
     });
     return response.json();
 }
-
 async function postDataString(url = "", data = {}) {
     const response = await fetch(url, {
         method: "POST",
@@ -165,7 +162,6 @@ async function postDataString(url = "", data = {}) {
     });
     return response;
 }
-
 function summarizeTicketDescription() {
     const ticketDescriptionInput = document.getElementById('ticketDescription');
     const currentDescription = ticketDescriptionInput.value;
@@ -194,8 +190,32 @@ function summarizeTicketResolution() {
         });
     }
 }
+function openTab(tabName) {
+    var tabContents = document.getElementsByClassName('tab-content');
+    for (var i = 0; i < tabContents.length; i++) {
+        tabContents[i].style.display = 'none';
+    }
+    var tabs = document.getElementsByClassName('tab');
+    for (var i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove('active-tab');
+    }
+    document.getElementById(tabName).style.display = 'block';
+    var selectedTab = document.querySelector('.tab.' + tabName.toLowerCase()); // Corrected here
+    if (selectedTab) {
+        selectedTab.classList.add('active-tab');
+    }
+    fetch( tabName + '.html')
+        .then(response => response.text())
+        .then(content => {
+            document.getElementById(tabName).innerHTML = content;
 
-function addCategory(event) {
+            setContextSelectedTextInClientQueryField();
+        })
+        .catch(error => console.error('Error fetching content:', error));
+}
+openTab('clientQuery');
+
+function addCategory(event){
     event.preventDefault();
     const ticketDescription = document.getElementById('ticketDescription').value;
     const resolution = document.getElementById('resolution').value;
@@ -209,7 +229,7 @@ function addCategory(event) {
 
     const url = 'http://0.0.0.0:7007/add-data';
     const data = {
-        "description": ticketDescription,
+        "description":ticketDescription,
         "resolution": resolution,
         "type": ticketType,
         "relevant_threads": relevantThreads,
@@ -221,79 +241,58 @@ function addCategory(event) {
         window.alert('Submitted Data Successfully');
     });
 
-    function openTab(tabName) {
-        var tabContents = document.getElementsByClassName('tab-content');
-        for (var i = 0; i < tabContents.length; i++) {
-            tabContents[i].style.display = 'none';
-        }
-        var tabs = document.getElementsByClassName('tab');
-        for (var i = 0; i < tabs.length; i++) {
-            tabs[i].classList.remove('active-tab');
-        }
-        document.getElementById(tabName).style.display = 'block';
-        var selectedTab = document.querySelector('.tab.' + tabName.toLowerCase()); // Corrected here
-        if (selectedTab) {
-            selectedTab.classList.add('active-tab');
-        }
-        fetch(tabName + '.html')
-            .then(response => response.text())
-            .then(content => {
-                document.getElementById(tabName).innerHTML = content;
+}
 
-                setContextSelectedTextInClientQueryField();
-            })
-            .catch(error => console.error('Error fetching content:', error));
-    }
 
-    const tablink = document.querySelectorAll('.tab');
-    tablink.forEach(element => {
-        element.addEventListener('click', function handleClick(event) {
-            openTab(element.getAttribute('name'));
-        });
+const tablink = document.querySelectorAll('.tab');
+tablink.forEach(element => {
+    element.addEventListener('click', function handleClick(event) {
+        openTab(element.getAttribute('name'));
     });
-    document.addEventListener("click", buttonClickListener);
+});
+// manage show/hide tabs - end here
 
-    function buttonClickListener(event) {
-        let element = event.target;
+// Add links on dynamically added elements
+document.addEventListener( "click", buttonClickListener );
 
-        switch (element.id) {
-            case 'summarize-btn-query':
-                summarizeQuery();
-                break;
-            case 'client-query-btn':
-                submitQuery();
-                break;
-            case 'summarize-btn-response':
-                summarizeResponse();
-                break;
-            case 'submit-btn':
-                displaySuggestionMsgHelper();
-                break;
-            case 'ticket-desc-summ-btn':
-                summarizeTicketDescription();
-                break;
-            case 'resolution-summ-btn':
-                summarizeTicketResolution();
-                break;
-            case 'submit-category-btn':
-                addCategory(event);
-                break;
+function buttonClickListener(event){
+    let element = event.target;
 
+    switch (element.id) {
+        case 'summarize-btn-query':
+            summarizeQuery();
+            break;
+        case 'client-query-btn':
+            submitQuery();
+            break;
+        case 'summarize-btn-response':
+            summarizeResponse();
+            break;
+        case 'submit-btn':
+            displaySuggestionMsgHelper();
+            break;
+        case 'ticket-desc-summ-btn':
+            summarizeTicketDescription();
+            break;
+        case 'resolution-summ-btn':
+            summarizeTicketResolution();
+            break;
+        case 'submit-category-btn':
+            addCategory(event);
+            break;
+    
+    }
+}
+// Add links on dynamically added elements - ends here
+
+// Prefill client query field, if user come from context menu
+function setContextSelectedTextInClientQueryField() {
+    chrome.storage.sync.get(['ss_query'], function(items) {
+        if (items.ss_query !== undefined) {    
+            document.getElementById('editable-message').value = items.ss_query;
+    
+            chrome.storage.sync.remove(['ss_query'], function(items) {
+            });
         }
-    }
-    // Add links on dynamically added elements - ends here
-
-    // Prefill client query field, if user come from context menu
-    function setContextSelectedTextInClientQueryField() {
-        chrome.storage.sync.get(['ss_query'], function (items) {
-            if (items.ss_query !== undefined) {
-                document.getElementById('editable-message').value = items.ss_query;
-
-                chrome.storage.sync.remove(['ss_query'], function (items) {
-                });
-            }
-        });
-    }
-
-
+    });
 }

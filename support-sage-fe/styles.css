@@ -1,0 +1,209 @@
+.tabs {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.tab {
+    cursor: pointer;
+    padding: 10px;
+    margin: 0;
+    border: 1px solid #ccc;
+}
+
+.tab-content {
+    display: none;
+}
+
+.active-tab {
+    background-color: #f0f0f0;
+}
+
+#main-container {
+    display: flex;
+}
+
+#left-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#right-container {
+    display:flex;
+    flex-direction: column;
+}
+
+#chat-container {
+    width: 50vw;
+    height: fit-content;
+    margin: 50px 50px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#editable-message {
+    flex: 1;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 10px;
+}
+
+.message-box {
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20px;
+    width: 70%;
+    color: black;
+}
+
+.message-left {
+    background-color: #ccc;
+    float: left; 
+}
+
+.message-right {
+    background-color: #d9f0be;
+    float: right;
+}
+
+
+#client-query-btn {
+    cursor: pointer;
+    margin-left: 5px;
+    border-radius: 10px;
+}
+
+#side-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#threads-container {
+    width: 30vw;
+    height: 28vh;
+    margin: 0 3vw 3vh 3vw;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#thread-header {
+    font-size: 20px;
+    font-weight: 400;
+    background-color: aliceblue;
+    border-radius: 5px;
+    width: 30vw;
+    margin: 5vh 3vw 2vh 3vw;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#ticket-header{
+    font-size: 20px;
+    font-weight: 400;
+    background-color: aliceblue;
+    border-radius: 5px;
+    width: 30vw;
+    margin: 0 3vw;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.thread-box {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+#tickets-container {
+    width: 30vw;
+    height: 28vh;
+    margin: 3vh 3vw 3vh 3vw;
+    border-radius: 10px;
+
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.ticket-box {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+#chat-messages {
+    height: 60vh;
+    width: 50lvw;
+    border-radius: 10px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+#user-input {
+    display: flex;
+    height: 60px;
+}
+
+#client-query-input {
+    display: flex;
+    height: 40px;
+    margin: 30px 20px;
+}
+
+#message-input {
+    flex: 1;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 10px;
+
+}
+
+#submit-btn {
+    cursor: pointer;
+    margin-left: 5px;
+    border-radius: 10px;
+}
+
+#summarize-btn-response {
+    cursor: pointer;
+    margin-left: 5px;
+    border-radius: 10px;
+}
+#summarize-btn-query {
+    cursor: pointer;
+    margin-left: 5px;
+    border-radius: 10px;
+}
+
+.suggestion-btn {
+    margin-top: 5px;
+    margin-right: 5px;
+    padding: 5px;
+    width: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.green {
+    border-color: #8BC34A;
+}
+
+.orange {
+    border-color: #FFC107;
+}
+
+.red {
+    border-color: #FF5722;
+}

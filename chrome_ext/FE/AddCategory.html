@@ -7,15 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
 </head>
-
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Data Submission Form</title>
-</head>
 <body>
     <div id="main-container">
         <div id="left-container">
@@ -26,14 +17,14 @@
                             <label for="ticketDescription">Ticket Description:</label>
                             <div class="input-container">
                             <input type="text" class = "message-input" id="ticketDescription" name="Ticket Description" placeholder="Ticket Description" required>
-                            <button type="button" class= "summarize-btn" onclick="summarizeTicketDescription()">Summarize</button>
+                            <button type="button" class= "summarize-btn" id="ticket-desc-summ-btn">Summarize</button>
                                 </div>
                         </div>
                         <div class="class-input">
                             <label for="resolution">Resolution:</label>
                             <div class="input-container">
                             <input type="text" class = "message-input" id="resolution" name="Resolution" placeholder="Ticket Description" required>
-                            <button type="button" class= "summarize-btn" onclick="summarizeTicketResolution()">Summarize</button>
+                            <button type="button" class= "summarize-btn" id= "resolution-summ-btn">Summarize</button>
                             </div>
                         </div>
                         <div class="class-input">
@@ -87,9 +78,5 @@
             </div>
         </div>
     </div>
-
-
-</body>
-</html>
 </body>
 </html>

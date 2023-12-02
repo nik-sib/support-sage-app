@@ -19,7 +19,6 @@ function genericOnClick(info) {
   
   if (ss_query != '') {
     chrome.storage.sync.set({'ss_query': ss_query}, function() {
-      console.log('Settings saved');
     });  
   }
   

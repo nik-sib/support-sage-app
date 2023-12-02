@@ -240,5 +240,13 @@ function buttonClickListener(event){
         case 'submit-btn':
             displaySuggestionMsgHelper();
             break;
+        case 'ticket-desc-summ-btn':
+            summarizeTicketDescription();
+            break;
+        case 'resolution-summ-btn':
+            summarizeTicketResolution();
+            break;
+
     }
 }
+// Add links on dynamically added elements - ends here

@@ -2,6 +2,7 @@
     display: flex;
     list-style: none;
     padding: 0;
+    margin-left: 4vw;
 }
 
 .tab {
@@ -9,6 +10,8 @@
     padding: 10px;
     margin: 0;
     border: 1px solid #ccc;
+    border-radius: 50px;
+    margin-right: 10px;
 }
 
 .tab-content {
@@ -16,7 +19,7 @@
 }
 
 .active-tab {
-    background-color: #f0f0f0;
+    background-color: aliceblue;
 }
 
 #main-container {
@@ -36,7 +39,17 @@
 #chat-container {
     width: 50vw;
     height: fit-content;
-    margin: 50px 50px;
+    margin: 5vh 50px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#form-container {
+    width: 40vw;
+    height: fit-content;
+    margin: 5vh 50px;
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 10px;
@@ -149,6 +162,16 @@
     border: 1px solid #ccc;
     margin-bottom: 10px;
 }
+#form-inner-container {
+    height: fit-content;
+    width: 40vw;
+    border-radius: 10px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
 
 #user-input {
     display: flex;
@@ -206,4 +229,67 @@
 
 .red {
     border-color: #FF5722;
+}
+
+.class-input {
+    display: flex;
+    height: 40px;
+    margin: 30px 20px;
+}
+
+.message-input {
+    flex: 1;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 10px;
+
+}
+
+.submit-btn {
+    cursor: pointer;
+    margin-left: auto;
+    border-radius: 10px;
+    display: block;
+    width: 83px;
+    margin-right: 12px;
+}
+.summarize-btn {
+    cursor: pointer;
+    margin-left: 5px;
+    border-radius: 10px;
+    height: 3.4vh
+}
+
+label {
+    width: 150px;
+    margin: 1vh;
+    display: inline-block;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+}
+
+.radio-buttons-container {
+    display: flex;
+    align-items: center;
+    width: 100px;
+}
+
+.radio-buttons-container input[type="radio"] {
+    margin-right: 5px;
+}
+
+.satisfaction-text {
+    margin: 0 20px;
+}
+
+
+#ticketChannel{
+    flex: 1;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 10px;
+    min-width: 150px;
 }

@@ -22,9 +22,10 @@ function submitQuery() {
 
     const apiResponse = {
         suggestions: [
-            { id: 1243, value: 'Support Sage Suggestion (High)', score: 0.9, threads, tickets},
-            { id: 2341, value: 'Support Sage Suggestion (Medium)', score: 0.6, threads, tickets },
-            { id: 3213, value: 'Support Sage Suggestion (Low)', score: 0.3, threads, tickets}
+            { id: 1243, value: 'Support Sage Suggestion (High)', score: 0.6, threads, tickets},
+            { id: 2341, value: 'Support Sage Suggestion (Medium)', score: 0.3, threads, tickets },
+            { id: 3213, value: 'Support Sage Suggestion (Low)', score: 0.1, threads, tickets},
+          
         ]
     };
     displaySuggestions(apiResponse.suggestions);
@@ -44,9 +45,9 @@ function displaySuggestions(suggestions) {
         const btn = document.createElement('button');
         btn.classList.add('suggestion-btn');
 
-        if (score > 0.6) {
+        if (score > 0.4) {
             btn.classList.add('green');
-        } else if (score > 0.3 && score <= 0.6) {
+        } else if (score > 0.3 && score <= 0.4) {
             btn.classList.add('orange');
         } else {
             btn.classList.add('red');
@@ -112,6 +113,77 @@ function displayThreadsAndTickets(threads, tickets){
     }
 }
 
-function summarize(text){
+function summarizeQuery(){
+    const queryDiv = document.getElementById('editable-message');
+    const query = queryDiv.value;
 
+    if(query !==undefined && query.length >0 ){
+    const url = 'http://0.0.0.0:7007/summarise';
+    const data = {'input_text': query}
+
+    postData(url, data).then((data) => {
+        queryDiv.value = data.result;
+      });
+    }
+}
+
+function summarizeResponse(){
+    const responseDiv = document.getElementById('message-input');
+    const response = responseDiv.value;
+
+    if(response !==undefined && response.length >0 ){
+    const url = 'http://0.0.0.0:7007/summarise';
+    const data = {'input_text': response}
+    
+    postData(url, data).then((data) => {
+        responseDiv.value = data.result;
+      });
+    }
+}
+
+
+async function postData(url = "", data = {}) {
+    console.log('postAPICall', data);
+    const response = await fetch(url, {
+      method: "POST",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      redirect: "follow",
+      referrerPolicy: "no-referrer",
+      body: JSON.stringify(data),
+    });
+    return response.json();
+  }
+  
+  function summarizeTicketDescription() {
+    const ticketDescriptionInput = document.getElementById('ticketDescription');
+    const currentDescription = ticketDescriptionInput.value;
+
+    if(currentDescription !==undefined && currentDescription.length >0 ){
+        const url = 'http://0.0.0.0:7007/summarise';
+        const data = {'input_text': currentDescription}
+        
+        postData(url, data).then((data) => {
+            ticketDescriptionInput.value = data.result;
+          });
+        }
+}
+
+
+function summarizeTicketResolution() {
+    const ticketDescriptionInput = document.getElementById('resolution');
+    const currentDescription = ticketDescriptionInput.value;
+
+    if(currentDescription !==undefined && currentDescription.length >0 ){
+        const url = 'http://0.0.0.0:7007/summarise';
+        const data = {'input_text': currentDescription}
+        
+        postData(url, data).then((data) => {
+            ticketDescriptionInput.value = data.result;
+          });
+        }
 }

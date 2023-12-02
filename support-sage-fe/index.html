@@ -1,37 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tab App</title>
-    <style>
-        .tabs {
-            display: flex;
-            list-style: none;
-            padding: 0;
-        }
-
-        .tab {
-            cursor: pointer;
-            padding: 10px;
-            margin: 0;
-            border: 1px solid #ccc;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .active-tab {
-            background-color: #f0f0f0;
-        }
-    </style>
+    <title>Support Sage</title>
 </head>
+
 <body>
 
     <ul class="tabs">
         <li class="tab" onclick="openTab('clientQuery')">Client Query</li>
-        <li class="tab" onclick="openTab('AddCategory')">Category Add</li>
+        <li class="tab" onclick="openTab('addCategory')">Category Add</li>
     </ul>
 
     <div id="clientQuery" class="tab-content">
@@ -44,40 +24,30 @@
 
     <script>
         function openTab(tabName) {
-            // Hide all tab contents
             var tabContents = document.getElementsByClassName('tab-content');
             for (var i = 0; i < tabContents.length; i++) {
                 tabContents[i].style.display = 'none';
             }
-
-            // Deactivate all tabs
             var tabs = document.getElementsByClassName('tab');
             for (var i = 0; i < tabs.length; i++) {
                 tabs[i].classList.remove('active-tab');
             }
-
-            // Show the selected tab content
             document.getElementById(tabName).style.display = 'block';
-
-            // Activate the selected tab
-            var selectedTab = document.querySelector('.tab[data-tab="' + tabName + '"]');
+            var selectedTab = document.querySelector('.tab.' + tabName.toLowerCase()); // Corrected here
             if (selectedTab) {
                 selectedTab.classList.add('active-tab');
             }
-
-            // Load content dynamically
-            fetch('./' + tabName + '.html')
+            fetch( tabName + '.html')
                 .then(response => response.text())
                 .then(content => {
                     document.getElementById(tabName).innerHTML = content;
                 })
                 .catch(error => console.error('Error fetching content:', error));
         }
-
-        // Load default tab content
         openTab('clientQuery');
     </script>
     <script src="script.js"></script>
 
 </body>
+
 </html>

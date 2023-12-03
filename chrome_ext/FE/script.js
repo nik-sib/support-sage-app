@@ -66,6 +66,11 @@ function onSuggestionSubmit(text) {
 
         newDiv.appendChild(newParaTag);
         parent.appendChild(newDiv);
+
+        const message = document.getElementById('message-input');
+        if(message){
+            message.value = ''
+        }
     }
 }
 
@@ -202,19 +207,19 @@ function openTab(tabName) {
         tabs[i].classList.remove('active-tab');
     }
     document.getElementById(tabName).style.display = 'block';
-    var selectedTab = document.querySelector('.tab.' + tabName.toLowerCase()); // Corrected here
+    var selectedTab = document.querySelector('.tab[name="' + tabName + '"]');
     if (selectedTab) {
         selectedTab.classList.add('active-tab');
     }
-    fetch( tabName + '.html')
+    fetch(tabName + '.html')
         .then(response => response.text())
         .then(content => {
             document.getElementById(tabName).innerHTML = content;
-
             setContextSelectedTextInClientQueryField();
         })
         .catch(error => console.error('Error fetching content:', error));
 }
+
 openTab('clientQuery');
 
 function addCategory(event){

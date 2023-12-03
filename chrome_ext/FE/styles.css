@@ -47,7 +47,7 @@
 }
 
 #form-container {
-    width: 40vw;
+    width: 500px;
     height: fit-content;
     margin: 5vh 50px;
     border: 1px solid #ccc;
@@ -166,17 +166,6 @@
     margin-bottom: 10px;
 }
 
-#form-inner-container {
-    height: fit-content;
-    width: 40vw;
-    border-radius: 10px;
-    overflow-y: scroll;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: column;
-}
-
 #user-input {
     display: flex;
     min-height: 60px;
@@ -215,6 +204,12 @@
     border-radius: 10px;
 }
 
+.summarize-btn {
+    margin-left: 10px;
+    height: 43px;
+    border-radius: 10px;
+    display: inline;
+}
 .suggestion-btn {
     margin-top: 5px;
     margin-right: 5px;
@@ -247,8 +242,14 @@
     flex: 1;
     padding: 5px;
     margin-right: 5px;
+    width: 186px;
     border-radius: 10px;
     resize: vertical;
+    border: 1px solid silver;
+}
+
+.message-input.message-input select {
+    width: 200px;
 
 }
 
@@ -265,6 +266,7 @@ label {
     width: 150px;
     margin: 1vh;
     display: inline-block;
+    font-weight: bold;
 }
 
 .input-container {
@@ -297,4 +299,58 @@ label {
     margin-right: 5px;
     border-radius: 10px;
     min-width: 150px;
+}
+
+
+
+#info-container {
+    width: 50vw;
+    height: fit-content;
+    margin: 5vh 50px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#info-list {
+    width: 100%;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    padding: 10px;
+    margin: 10px auto;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.left-column {
+    flex: 1;
+    max-width: 15%; /* Adjust the width as needed */
+}
+
+.right-column {
+    flex: 2;
+    max-width: 65%; /* Adjust the width as needed */
+}
+
+.info-label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+#info-header {
+    font-size: 20px;
+    font-weight: 400;
+    background-color: aliceblue;
+    border-radius: 5px;
+    width: 50vw;
+    margin: 5vh 3vw 2vh 3vw;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

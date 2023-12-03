@@ -37,7 +37,7 @@
             if (selectedTab) {
                 selectedTab.classList.add('active-tab');
             }
-            fetch( tabName + '.html')
+            fetch(tabName + '.html')
                 .then(response => response.text())
                 .then(content => {
                     document.getElementById(tabName).innerHTML = content;

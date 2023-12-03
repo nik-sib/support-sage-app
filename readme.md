@@ -60,6 +60,8 @@ Ex. URL: 0.0.0.0:7000/summarise
 ## Demo video & Presentations
 
 • [Presentation](https://docs.google.com/presentation/d/1yJEe5H1mye1zozV9HiBRMWyUykaWRDoz6TEwH8QGPvk/edit#slide=id.g25f6af9dd6_0_0)
+• [Demo Video](https://drive.google.com/file/d/1FXXHOLH3PYnoXisYMD-VdJMnUG4FBkEu/view?usp=drive_link)
+
 
 
    

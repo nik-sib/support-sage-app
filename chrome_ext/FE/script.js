@@ -20,32 +20,32 @@ function submitQuery() {
 }
 
 function displaySuggestions(suggestions) {
+    let SuggestionSet = new Set();
     const suggestionsContainer = document.getElementById('suggestions-container');
     suggestionsContainer.innerHTML = '';
     let responseText = '';
-
-    suggestions.forEach((suggestion, index) => {
+    suggestions.forEach((suggestion) => {
         let { resolution, score, threads, tickets } = suggestion;
-        const btn = document.createElement('button');
-        btn.classList.add('suggestion-btn');
-
-        if (score > 40) {
-            btn.classList.add('green');
-        } else if (score > 30 && score <= 40) {
-            btn.classList.add('orange');
-        } else {
-            btn.classList.add('red');
+        if (!SuggestionSet.has(resolution)) {
+            SuggestionSet.add(resolution)
+            const btn = document.createElement('button');
+            btn.classList.add('suggestion-btn');
+            if (score > 50) {
+                btn.classList.add('green');
+            } else if (score > 30 && score <= 50) {
+                btn.classList.add('orange');
+            } else {
+                btn.classList.add('red');
+            }
+            btn.textContent = resolution;
+            btn.addEventListener('click', () => {
+                let messageInput = document.getElementById('message-input');
+                messageInput.value = resolution;
+                displayThreadsAndTickets(threads, tickets);
+            });
+            suggestionsContainer.appendChild(btn);
         }
-
-        btn.textContent = resolution;
-        btn.addEventListener('click', () => {
-            let messageInput = document.getElementById('message-input');
-            messageInput.value = resolution;
-            displayThreadsAndTickets(threads, tickets);
-        });
-        suggestionsContainer.appendChild(btn);
     });
-
     return responseText;
 }
 
@@ -93,6 +93,8 @@ function displayThreadsAndTickets(threads, tickets) {
         ticketsContainer.innerHTML = '';
 
         tickets.forEach(ticket => {
+            const ticketBox = document.createElement('div');
+            ticketBox.classList.add('ticket-box');
             const ticketLink = document.createElement('a');
             ticketLink.href = ticket;
             ticketLink.target = '_blank';
@@ -217,6 +219,9 @@ openTab('clientQuery');
 
 function addCategory(event){
     event.preventDefault();
+    if (!validateInputs()) {
+        return;
+    }
     const ticketDescription = document.getElementById('ticketDescription').value;
     const resolution = document.getElementById('resolution').value;
     const ticketType = document.getElementById('ticketType').value;
@@ -240,9 +245,83 @@ function addCategory(event){
     postDataString(url, data).then((data) => {
         window.alert('Submitted Data Successfully');
     });
+    clearInputFields();
 
 }
+function validateInputs() {
+    let invalidFields = [];
 
+    const ticketDescription = document.getElementById('ticketDescription').value.trim();
+    if (ticketDescription === '') {
+        invalidFields.push('Ticket Description');
+    }
+
+    const resolution = document.getElementById('resolution').value.trim();
+    if (resolution === '') {
+        invalidFields.push('Resolution');
+    }
+
+    const ticketType = document.getElementById('ticketType').value;
+    if (ticketType === '') {
+        invalidFields.push('Ticket Type');
+    }
+
+    const ratingInputs = document.querySelectorAll('input[name="customerSatisfactionRating"]:checked');
+    if (ratingInputs.length === 0) {
+        invalidFields.push('Customer Satisfaction Rating');
+    }
+
+    const ticketThreads = document.getElementById('ticketThreads').value.trim();
+    if (ticketThreads === '') {
+        invalidFields.push('Ticket Threads');
+    }
+
+    const relevantTickets = document.getElementById('relevantTickets').value.trim();
+    if (relevantTickets === '') {
+        invalidFields.push('Relevant Tickets');
+    }
+
+    const ticketChannel = document.getElementById('ticketChannel').value;
+    if (ticketChannel === '') {
+        invalidFields.push('Ticket Channel');
+    }
+    if (invalidFields.length > 0) {
+        const errorMessage = `Please fill in the following fields: ${invalidFields.join(', ')}`;
+        window.alert(errorMessage);
+        return false;
+    }
+    return true;
+}
+
+function clearInputFields() {
+    const ticketDescription = document.getElementById('ticketDescription');
+    if (ticketDescription) {
+        ticketDescription.value = '';
+    }    const resolution = document.getElementById('resolution');
+    if (resolution) {
+        resolution.value = '';
+    }
+    const ticketType = document.getElementById('ticketType');
+    if (ticketType) {
+        ticketType.value = '';
+    }
+    const ratingInputs = document.querySelectorAll('input[name="customerSatisfactionRating"]');
+    ratingInputs.forEach(input => {
+        input.checked = false;
+    });
+    const ticketThreads = document.getElementById('ticketThreads');
+    if (ticketThreads) {
+        ticketThreads.value = '';
+    }
+    const relevantTickets = document.getElementById('relevantTickets');
+    if (relevantTickets) {
+        relevantTickets.value = '';
+    }
+    const ticketChannel = document.getElementById('ticketChannel');
+    if (ticketChannel) {
+        ticketChannel.value = 'Select';
+    }
+}
 
 const tablink = document.querySelectorAll('.tab');
 tablink.forEach(element => {
@@ -250,9 +329,7 @@ tablink.forEach(element => {
         openTab(element.getAttribute('name'));
     });
 });
-// manage show/hide tabs - end here
 
-// Add links on dynamically added elements
 document.addEventListener( "click", buttonClickListener );
 
 function buttonClickListener(event){
@@ -283,9 +360,7 @@ function buttonClickListener(event){
     
     }
 }
-// Add links on dynamically added elements - ends here
 
-// Prefill client query field, if user come from context menu
 function setContextSelectedTextInClientQueryField() {
     chrome.storage.sync.get(['ss_query'], function(items) {
         if (items.ss_query !== undefined) {    

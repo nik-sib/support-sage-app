@@ -271,15 +271,6 @@ function validateInputs() {
         invalidFields.push('Customer Satisfaction Rating');
     }
 
-    const ticketThreads = document.getElementById('ticketThreads').value.trim();
-    if (ticketThreads === '') {
-        invalidFields.push('Ticket Threads');
-    }
-
-    const relevantTickets = document.getElementById('relevantTickets').value.trim();
-    if (relevantTickets === '') {
-        invalidFields.push('Relevant Tickets');
-    }
 
     const ticketChannel = document.getElementById('ticketChannel').value;
     if (ticketChannel === '') {

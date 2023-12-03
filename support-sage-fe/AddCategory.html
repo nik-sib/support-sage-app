@@ -1,10 +1,11 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Data Submission Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>SupportSage - Add Category</title>
+
 </head>
 
 <body>
@@ -18,8 +19,7 @@
                             <div class="input-container">
                                 <textarea type="text" class="message-input" id="ticketDescription"
                                     name="Ticket Description" placeholder="Ticket Description" required></textarea>
-                                <button id="summarize-btn-query" type="button" class="summarize-btn"
-                                    onclick="summarizeTicketDescription()">Summarize</button>
+                                <button type="button" class="summarize-btn" id="ticket-desc-summ-btn">Summarize</button>
                             </div>
                         </div>
                         <div class="class-input">
@@ -27,8 +27,7 @@
                             <div class="input-container">
                                 <textarea type="text" class="message-input" id="resolution" name="Resolution"
                                     placeholder="Resolution" required></textarea>
-                                <button id="summarize-btn-query" type="button" class="summarize-btn"
-                                    onclick="summarizeTicketResolution()">Summarize</button>
+                                <button type="button" class="summarize-btn" id="resolution-summ-btn">Summarize</button>
                             </div>
                         </div>
                         <div class="class-input">
@@ -70,7 +69,7 @@
                         <div class="class-input">
                             <label for="ticketChannel">Ticket Channel:</label>
                             <div class="input-container">
-                                <select id="ticketChannel" name="ticketChannel" required>
+                                <select id="ticketChannel" name="ticketChannel" class='message-input' required>
                                     <option value="Social Media">Social Media</option>
                                     <option value="Chat">Chat</option>
                                     <option value="Phone">Phone</option>
@@ -79,18 +78,84 @@
                             </div>
                         </div>
                         <div class="class-input">
-                            <button class="submit-btn" type="submit" onclick="addCategory(event)">Submit</button>
+                            <button class="submit-btn" type="button" id="submit-category-btn">Submit</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+        <div id="right-container">
+            <div id="info-header">
+                Important Information
+            </div>
+            <div id="info-container">
+                <div id="info-list">
+                    <div class="info-item">
+                        <div class="left-column">
+                            <span class="info-label">Ticket Description:</span>
+                        </div>
+                        <div class="right-column">
+                            Save the customer's question along with any additional details you find relevant. Use the
+                            "summarize" button to condense the given text into a brief summary.
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="left-column">
+                            <span class="info-label">Resolution:</span>
+                        </div>
+                        <div class="right-column">
+                            Save the solution given to the customer. You can also use the "summarize" button to reduce
+                            the condense text into a brief and concise form.
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="left-column">
+                            <span class="info-label">Ticket Type:</span>
+                        </div>
+                        <div class="right-column">
+                            Store a new category to classify the type of issue the client encountered. </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="left-column">
+                            <span class="info-label">Relevant Threads:</span>
+                        </div>
+                        <div class="right-column">
+                            Relevant Threads: Provide the links to any relevant Slack threads initiated for this issue.
+                            Use
+                            comma (,) to add multiple threads.
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="left-column">
+                            <span class="info-label">Relevant Tickets:</span>
+                        </div>
+                        <div class="right-column">
+                            Provide the links to any relevant Jira tickets. Use comma (,) to add multiple
+                            tickets.
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="left-column">
+                            <span class="info-label">Customer Satisfaction Rating:</span>
+                        </div>
+                        <div class="right-column">
+                            CSR provided by the client
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="left-column">
+                            <span class="info-label">Ticket Channel:</span>
+                        </div>
+                        <div class="right-column">
+                            Select the channel from the list, via where the issue was raised from. (edited) </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-
-</body>
-
-</html>
 </body>
 
 </html>

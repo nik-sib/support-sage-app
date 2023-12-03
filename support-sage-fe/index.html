@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support Sage</title>
+    <title>SupportSage</title>
 </head>
 
 <body>
 
     <ul class="tabs">
-        <li class="tab" onclick="openTab('clientQuery')">Client Query</li>
-        <li class="tab" onclick="openTab('addCategory')">Add Category</li>
+        <li class="tab" name="clientQuery">Client Query</li>
+        <li class="tab" name="addCategory">Add Category</li>
     </ul>
 
     <div id="clientQuery" class="tab-content">
@@ -22,30 +22,6 @@
         <!-- Content for Category Add will be loaded dynamically here -->
     </div>
 
-    <script>
-        function openTab(tabName) {
-            var tabContents = document.getElementsByClassName('tab-content');
-            for (var i = 0; i < tabContents.length; i++) {
-                tabContents[i].style.display = 'none';
-            }
-            var tabs = document.getElementsByClassName('tab');
-            for (var i = 0; i < tabs.length; i++) {
-                tabs[i].classList.remove('active-tab');
-            }
-            document.getElementById(tabName).style.display = 'block';
-            var selectedTab = document.querySelector('.tab.' + tabName.toLowerCase()); // Corrected here
-            if (selectedTab) {
-                selectedTab.classList.add('active-tab');
-            }
-            fetch(tabName + '.html')
-                .then(response => response.text())
-                .then(content => {
-                    document.getElementById(tabName).innerHTML = content;
-                })
-                .catch(error => console.error('Error fetching content:', error));
-        }
-        openTab('clientQuery');
-    </script>
     <script src="script.js"></script>
 
 </body>

@@ -30,15 +30,22 @@ Ex. URL: 0.0.0.0:7000/summarise
    
    **NOTE** - The `support-sage-fe` folder should be opened in a new VS Code window to perform the above steps.
 
-#### Installing Chrome extension
-Chrome exension in not live, so in order to run chrome extension in your local. We need to follow below steps:
-1. Go to the Extensions page by entering `chrome://extensions` in a new tab.
-2. Alternatively, click on the Extensions menu puzzle button and select Manage Extensions at the bottom of the menu.
-Or, click the Chrome menu, hover over More Tools, then select Extensions.
-3. Enable Developer Mode by clicking the toggle switch next to Developer mode.
-4. Click the Load unpacked button and select the extension directory chrome_ext.
-Ta-da! The extension has been successfully installed. For details please visit [official documetation of chrome](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)
+5. To manually install the Chrome extension, follow these steps:
 
+   1. **Access Extensions Page:**
+      - Open a new tab and enter `chrome://extensions`.
+      - Alternatively, click the puzzle-shaped Extensions menu, then select "Manage Extensions" at the bottom. Alternatively, hover over "More Tools" in the Chrome menu and choose "Extensions."
+
+   2. **Enable Developer Mode:**
+      - Toggle on "Developer mode" by clicking the switch in the top right corner.
+
+   3. **Load Unpacked Extension:**
+      - Click "Load unpacked" and navigate to the directory containing your extension files named `chrome_ext`.
+
+   4. **Confirmation:**
+      - Congratulations! The extension is now successfully installed.
+
+   For more detailed instructions, refer to the [official Chrome documentation](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked).
 
 ## Resources
 
